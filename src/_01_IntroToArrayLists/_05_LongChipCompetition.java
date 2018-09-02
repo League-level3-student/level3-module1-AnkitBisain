@@ -1,5 +1,6 @@
 package _01_IntroToArrayLists;
 
+import java.lang.management.ThreadMXBean;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -12,11 +13,47 @@ public class _05_LongChipCompetition {
 	 * the longest chip. You may not edit the Chip or Beatle classes. Make sure to
 	 * initialize The Beatles before you start your search. *
 	 **/
+	
+	
 	private ArrayList<Beatle> theBeatles = new ArrayList<Beatle>();
 
 	public static void main(String[] args) {
 		_05_LongChipCompetition lcc = new _05_LongChipCompetition();
-		
+		lcc.initializeBeatles();
+		ArrayList<Integer> winners = new ArrayList<Integer>();
+		double largest = 0;
+		for(int i=0; i < lcc.theBeatles.size(); i++) {
+			for(int j = 0; j < lcc.theBeatles.get(i).getChips().size(); j++) {
+				if( lcc.theBeatles.get(i).getChips().get(j).getLength() > largest) {
+					largest = lcc.theBeatles.get(i).getChips().get(j).getLength();
+					winners.clear();
+					winners.add(i);
+				}else {
+					if( lcc.theBeatles.get(i).getChips().get(j).getLength() == largest) {
+						boolean isIn = false;
+						for(int k = 0; k < winners.size(); k++) {
+							if(winners.get(k) == i) {
+								isIn = true;
+							}
+						}
+						if(isIn == false) {
+							winners.add(i);
+						}
+					}
+				}
+			}
+		}
+		for(int i = 0; i < winners.size(); i++) {
+			if( i == winners.size() - 1) {
+				if(winners.size() == 1) {
+					System.out.print(lcc.theBeatles.get(winners.get(i)).getName() + " had the longest chip.");
+				}else {
+					System.out.print("and " + lcc.theBeatles.get(winners.get(i)).getName() + " had the longest chips.");
+				}
+			}else {
+			System.out.print(lcc.theBeatles.get(winners.get(i)).getName() + ", ");
+			}
+		}
 	}
 	
 	private void initializeBeatles() {
