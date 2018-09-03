@@ -15,6 +15,7 @@ class IntegerStackTest {
 		is.push(3);
 		is.push(4);
 		
+		
 		assertEquals(4, is.pop());
 		assertEquals(3, is.pop());
 		assertEquals(2, is.pop());
