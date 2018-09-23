@@ -16,12 +16,32 @@ public class _03_TestMatchingBrackets {
 		assertTrue(doBracketsMatch("{}{}{{}}"));
 		assertFalse(doBracketsMatch("{{}"));
 		assertFalse(doBracketsMatch("}{"));
+		assertFalse(doBracketsMatch("{{}"));
 	}
 
-	// USE A STACK TO COMPLETE THE METHOD FOR CHECKING IF EVERY OPENING BRACKET HAS A MATCHING CLOSING BRACKET
+	// USE A STACK TO COMPLETE THE METHOD FOR CHECKING IF EVERY OPENING BRACKET HAS
+	// A MATCHING CLOSING BRACKET
 	private boolean doBracketsMatch(String b) {
 		
-		return false;
+		int a = 0;
+		
+		for (int i = 0; i < b.length(); i++) {
+			if (b.charAt(i) == '{') {
+				a++;
+			} else {
+				a--;
+			}
+			
+			if (a < 0) {
+				return false;
+			}
+		}
+		if (a != 0) {
+			return false;
+		} else {
+			return true;
+		}
+
 	}
 
 }

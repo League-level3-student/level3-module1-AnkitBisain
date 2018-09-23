@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.junit.jupiter.params.shadow.com.univocity.parsers.conversions.ToStringConversion;
+
 public class _02_TextUndoRedo implements KeyListener {
 	/* 
 	 * Create a JFrame with a JPanel and a JLabel.
@@ -54,7 +56,7 @@ public class _02_TextUndoRedo implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
-		  deleted.push('a');
+		  deleted.push(label.getText().charAt(label.getText().length()-2));
 		 label.setText(label.getText().substring(0, label.getText().length()-2));
 		}
 
