@@ -16,5 +16,12 @@ public class _01_IntroToHashMaps {
 		//   The square Root of 1 is 1.0
 		//   The square Root of 2 is 1.4142135623730951
 		//   The square Root of 3 is 1.7320508075688772
+		HashMap<Integer, Double> roots = new HashMap<Integer, Double>();
+		for(int i = 0; i < 499; i++) {
+			roots.put(i, Math.sqrt(i));
+		}
+		for(int i = 0; i < 499; i++) {
+			System.out.println("The square root of " + i + " is " + roots.get(i));
+		}
 	}
 }
